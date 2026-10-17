@@ -1,12 +1,13 @@
 import {capabilities, reviews, roadmap} from './data.js';
 import {architectureViews, quickStarts, teams} from './blueprintData.js';
 import {vendors} from './vendors.js';
+import {businessMetrics} from './metricsData.js';
 
 // The app is read as one path: understand the problem -> decide what is needed -> deliver it.
 export const stages = [
   {id: 1, name: 'Understand the problem', question: 'What are we protecting, and where are the gaps?', pages: ['Overview', 'Capability map', 'Design review']},
   {id: 2, name: 'Decide what is needed', question: 'Which approach, architecture, team and tools?', pages: ['Options & tradeoffs', 'Architecture', 'Organisation', 'Vendor landscape']},
-  {id: 3, name: 'Deliver it', question: 'In what order, with what evidence, and who runs it?', pages: ['Delivery roadmap', 'Foundation quick starts', 'Delivery model', 'AI agentic SDLC']}
+  {id: 3, name: 'Deliver it', question: 'In what order, with what evidence, and who runs it?', pages: ['Delivery roadmap', 'Foundation quick starts', 'Delivery model', 'AI agentic SDLC', 'Performance scorecard']}
 ];
 export const pageOrder = stages.flatMap(s => s.pages);
 export const stageOf = page => stages.find(s => s.pages.includes(page));
@@ -15,7 +16,7 @@ export const routes = {
   'Overview': 'overview', 'Capability map': 'capabilities', 'Design review': 'design-review',
   'Options & tradeoffs': 'options', 'Architecture': 'architecture', 'Organisation': 'organisation', 'Vendor landscape': 'vendors',
   'Delivery roadmap': 'roadmap', 'Foundation quick starts': 'quick-starts', 'Delivery model': 'delivery-model', 'AI agentic SDLC': 'agentic-sdlc',
-  'Sources & references': 'sources'
+  'Performance scorecard': 'performance', 'Sources & references': 'sources'
 };
 export function parseHash(hash) {
   const [slug = '', sub = ''] = String(hash || '').replace(/^#\/?/, '').split('/');
@@ -37,7 +38,8 @@ const nextText = {
   'Delivery roadmap': ['Work through the recipes', 'Ten build recipes with prerequisites, starter contracts and acceptance evidence.'],
   'Foundation quick starts': ['Set up how the work runs', 'Workstreams, service contracts and forums that keep delivery and operations connected.'],
   'Delivery model': ['Add agent-assisted delivery', 'Speed up engineering work without moving accountability away from people.'],
-  'AI agentic SDLC': null
+  'AI agentic SDLC': ['Define how success is measured', 'Connect the delivery investment to operational effectiveness and business outcomes, with owned measurement contracts.'],
+  'Performance scorecard': null
 };
 export function nextStep(page, ctx = {}) {
   if (!(page in nextText)) return null;
@@ -166,6 +168,7 @@ export function searchIndex() {
     ...quickStarts.map(q => ({kind: 'Recipe', label: `${q.id} ${q.title}`, hint: q.outcome, page: 'Foundation quick starts', sub: q.id})),
     ...teams.map(t => ({kind: 'Team', label: t.name, hint: t.mission, page: 'Organisation', sub: t.id})),
     ...vendors.map(v => ({kind: 'Vendor', label: v.name, hint: `${v.category} · ${v.replaces}`, page: 'Vendor landscape', sub: ''})),
+    ...businessMetrics.map(m => ({kind: 'Metric', label: `${m.id} ${m.title}`, hint: `${m.domain} · ${m.owner} · ${m.formula}`, page: 'Performance scorecard', sub: m.id})),
     ...reviews.map(r => ({kind: 'Review', label: r.title, hint: r.text, page: 'Design review', sub: ''}))
   ];
 }

@@ -1,8 +1,9 @@
 import {sources} from './data.js';
 import {foundationSources, quickStarts} from './blueprintData.js';
 import {sdlcSources} from './sdlcData.js';
+import {metricSources} from './metricsData.js';
 
-export const referenceGroups = ['Detection & response', 'Foundations', 'Data & recovery', 'Agents & delivery'];
+export const referenceGroups = ['Detection & response', 'Foundations', 'Data & recovery', 'Agents & delivery', 'Measurement & outcomes'];
 
 const groupByTitle = {
   'GuardDuty event delivery': 'Detection & response', 'Security Hub automation': 'Detection & response', 'Temporary credential containment': 'Detection & response',
@@ -32,6 +33,7 @@ export function references() {
   const list = [
     ...sources.map(([title, url, note]) => ({title, url, note, group: groupByTitle[title], usedBy: []})),
     ...foundationSources.map(([title, url], i) => ({title, url, note: foundationNotes[title], group: groupByTitle[title], usedBy: usedBy(i)})),
+    ...metricSources.map(([title, url, note]) => ({title, url, note, group: 'Measurement & outcomes', usedBy: []})),
     ...sdlcSources.map(([title, url, note]) => ({title, url, note, group: 'Agents & delivery', usedBy: []}))
   ];
   return list.sort((a, b) => referenceGroups.indexOf(a.group) - referenceGroups.indexOf(b.group));

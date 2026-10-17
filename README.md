@@ -78,3 +78,11 @@ The guide is organised as three stages, shown in the sidebar: **understand the p
 - **Reset.** The help dialog can reset all locally saved choices and evidence.
 
 Cross-page logic lives in `src/journey.js` (covered by `tests/journey.test.js`); the components are in `src/JourneyViews.jsx`.
+
+## Business performance scorecard
+
+`#/performance` adds 29 metric contracts across business outcomes, delivery and operations. The views support board/executive, service owner/CISO, delivery-lead and team/on-call decisions. Each measure defines its owner, event boundaries/formula, source systems, cohort/denominator, review cadence, minimum observations, evidence freshness, proposed thresholds, action and anti-gaming guardrail. Outcome contribution maps and globally visible business-disruption/false-containment/escaped-defect guardrails keep speed and cost connected to business safety.
+
+No production metrics are invented or connected. Manual observations, reporting cut-off and owner-declared approvals are stored in browser localStorage. The page retains the latest record per metric; historical snapshots belong in exported registers or source systems. Invalid/zero denominators, missing cohort/reviewer/reference, insufficient samples, future/stale evidence, unapproved targets and invalid threshold ordering cannot score green. Proposed targets are illustrative local starting points, not vendor SLAs, DORA benchmarks or approved business tolerances.
+
+CSV and Markdown exports include the dictionary and recorded evidence. The full design export includes this scorecard. CSV cells are escaped to protect against spreadsheet-formula injection. The measurement-model view explains aggregation, percentile rules, success gates, instrumentation and decision cadences. The DORA-derived measures are scoped per service and use local p95 reporting choices; the primary references are available in the reference library.
