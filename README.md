@@ -30,3 +30,19 @@ Architecture choice, vendor shortlist, review checks and delivery progress use b
 Research was checked against official AWS and vendor sources on 17 October 2026. Recommendations are planning guidance. Latencies, licensing, availability and prices must be validated for the target estate. Vendor cards link to official product or buying information; exact marketplace terms and private offers require confirmation.
 
 No original AWS image attachments were available in the workspace. The import action views a reference image locally; it does not perform automatic image analysis.
+
+## Fly.io deployment
+
+Production URL: https://slinn-security-architecture.fly.dev
+
+The `Deploy to Fly.io` GitHub Actions workflow builds pull requests and automatically deploys successful pushes to `main`. It can also be run manually from the Actions tab. The deploy job uses the `production` environment and serialises deployments.
+
+The multi-stage Dockerfile builds with Node 24 and serves the compiled site with nginx on port 8080. Fly forces HTTPS, checks `/healthz`, and runs a 256 MB shared-CPU Machine in London (`lhr`). Deployment uses one Machine (`--ha=false`); idle Machines can stop and restart on demand, so the first request after idle may be slower. Storage, compute, networking and builds are subject to Fly.io billing.
+
+The Fly app must exist before the workflow runs. GitHub repository secret `FLY_API_TOKEN` contains an app-scoped deploy token; no credentials belong in source control. The initial token is configured with a one-year expiry. Before it expires, generate a replacement and pipe it directly into GitHub without printing or saving it:
+
+```sh
+flyctl tokens create deploy --app slinn-security-architecture --expiry 8760h | gh secret set FLY_API_TOKEN --repo tomperryuk/SecurityApplication
+```
+
+To roll back, revert the relevant commit on `main` and let the workflow redeploy. Browser-local selections are specific to the deployed origin; this application does not have a shared database.
