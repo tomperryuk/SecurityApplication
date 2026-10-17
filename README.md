@@ -56,3 +56,11 @@ Organisation includes five practice charters, lean/MDR versus scaled team struct
 Foundation quick starts contains ten implementation recipes with prerequisites, build steps, three evidence checks each, handover artefacts, rollback/stop conditions, downloadable starter contracts and official documentation. Checkmarks are browser-local evidence tracking, not automated verification. Templates are illustrative contracts, not ready-to-apply Terraform or CloudFormation; no AWS infrastructure is provisioned by this application. Staffing, effort and elapsed-time estimates are planning assumptions that need validation against the organisation.
 
 The complete Markdown export includes the new architecture source diagrams, component/connection details, operating model and foundation recipes. A recipe export includes its locally recorded evidence checks.
+
+## AI agentic SDLC
+
+The AI agentic SDLC page adds a seven-stage workflow, human/agent boundaries, four-workstream alignment, a proposed 4.0 FTE delivery pod, mobilisation guidance and an example task contract. Agent sandboxing, evaluation and human acceptance are proposed implementation guidance; this page does not enable a live agent runtime or change repository access/approval settings.
+
+The speed and cost model uses browser-local editable assumptions and GBP illustrations, not vendor quotes or a guaranteed productivity uplift. It applies gross task reductions only to eligible effort, adds incremental review/rework, and accounts for seats, usage, sandbox/CI, support and setup costs. It separates recovered-capacity value from actual cash impact, includes unchanged external wait in the illustrative lead-time calculation and permits negative results. Avoided cash spend is a separate, documented budget decision and is not added to recovered labour value. The model covers a monthly engineering cohort, excluding the wider SOC/security operating budget.
+
+Download the SDLC playbook, Mermaid workflow and task contract from the new page. The complete design export includes the currently saved economics assumptions and results. `npm test` covers model reconciliation, negative/zero scenarios, dependency alignment and prevention of cash/capacity double counting, alongside the foundation-content checks.
