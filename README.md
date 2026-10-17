@@ -46,3 +46,13 @@ flyctl tokens create deploy --app slinn-security-architecture --expiry 8760h | g
 ```
 
 To roll back, revert the relevant commit on `main` and let the workflow redeploy. Browser-local selections are specific to the deployed origin; this application does not have a shared database.
+
+## Implementation playbooks (design v2)
+
+The Architecture page contains six interactive reference designs: account foundations, detection/containment, security data, agent controls, recovery, and detection delivery. Select a component for its owner, implementation contract and boundary. Connection registers, failure tests, acceptance scenarios and prerequisite recipes accompany each view. Diagrams download as SVG or editable Mermaid.
+
+Organisation includes five practice charters, lean/MDR versus scaled team structures, decision-rights RACI, all 19 capability assignments and a transparent continuous-seat staffing calculator. Delivery model includes four workstreams, dependencies, readiness gates, service contracts, delivery forums and the first four-week mobilisation sequence.
+
+Foundation quick starts contains ten implementation recipes with prerequisites, build steps, three evidence checks each, handover artefacts, rollback/stop conditions, downloadable starter contracts and official documentation. Checkmarks are browser-local evidence tracking, not automated verification. Templates are illustrative contracts, not ready-to-apply Terraform or CloudFormation; no AWS infrastructure is provisioned by this application. Staffing, effort and elapsed-time estimates are planning assumptions that need validation against the organisation.
+
+The complete Markdown export includes the new architecture source diagrams, component/connection details, operating model and foundation recipes. A recipe export includes its locally recorded evidence checks.
