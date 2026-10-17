@@ -29,7 +29,7 @@ Architecture choice, vendor shortlist, review checks and delivery progress use b
 
 Research was checked against official AWS and vendor sources on 17 October 2026. Recommendations are planning guidance. Latencies, licensing, availability and prices must be validated for the target estate. Vendor cards link to official product or buying information; exact marketplace terms and private offers require confirmation.
 
-No original AWS image attachments were available in the workspace. The import action views a reference image locally; it does not perform automatic image analysis.
+The import action opens an AWS diagram or architecture image beside the design for comparison. It is viewed locally in the browser; it is not uploaded or automatically analysed.
 
 ## Fly.io deployment
 
@@ -64,3 +64,17 @@ The AI agentic SDLC page adds a seven-stage workflow, human/agent boundaries, fo
 The speed and cost model uses browser-local editable assumptions and GBP illustrations, not vendor quotes or a guaranteed productivity uplift. It applies gross task reductions only to eligible effort, adds incremental review/rework, and accounts for seats, usage, sandbox/CI, support and setup costs. It separates recovered-capacity value from actual cash impact, includes unchanged external wait in the illustrative lead-time calculation and permits negative results. Avoided cash spend is a separate, documented budget decision and is not added to recovered labour value. The model covers a monthly engineering cohort, excluding the wider SOC/security operating budget.
 
 Download the SDLC playbook, Mermaid workflow and task contract from the new page. The complete design export includes the currently saved economics assumptions and results. `npm test` covers model reconciliation, negative/zero scenarios, dependency alignment and prevention of cash/capacity double counting, alongside the foundation-content checks.
+
+## Guided journey
+
+The guide is organised as three stages, shown in the sidebar: **understand the problem** (Overview, Capability map, Design review), **decide what is needed** (Options & tradeoffs, Architecture, Organisation, Vendor landscape) and **deliver it** (Delivery roadmap, Foundation quick starts, Delivery model, AI agentic SDLC). Each page ends with a suggested next step.
+
+- **Linked content.** A capability opens a hub showing the designs that cover it, the recipes that build it (with evidence progress and roadmap phase), the accountable practice and the tools that could fill gaps. Each design-review observation links to the recipes that address it.
+- **Choosing an approach.** Four questions on Options & tradeoffs suggest an approach and an organisation model. The choice carries through: a banner on Architecture and Foundation quick starts, optional recipes, vendor ordering, the organisation model and the roadmap.
+- **One timeline.** `roadmap` in `src/data.js` is the single plan: five phases, each with its recipes. Delivery model, workstream windows and the evidence progress shown on Overview and Roadmap all derive from it. A test checks that every recipe is in exactly one phase and never before its prerequisites. Progress comes from recorded evidence checks; sign-off is a separate human decision and warns when checks are outstanding.
+- **Critical path.** The roadmap and Foundation quick starts show the minimum sequenced effort from the recipe dependencies, alongside the total.
+- **Shareable views.** The page, architecture view, recipe and team are in the URL (for example `#/quick-starts/QS-06`), so links and the back button work. Press ⌘K / Ctrl+K to search every page, capability, design, recipe, team, vendor and review item.
+- **Shortlist comparison.** Shortlist two or more vendors to compare them side by side on the same questions.
+- **Reset.** The help dialog can reset all locally saved choices and evidence.
+
+Cross-page logic lives in `src/journey.js` (covered by `tests/journey.test.js`); the components are in `src/JourneyViews.jsx`.
